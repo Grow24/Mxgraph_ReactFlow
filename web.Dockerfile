@@ -1,3 +1,5 @@
+# HBMP frontend (Next.js). Use this Dockerfile on the Zeabur "web" service.
+# Do not reuse the server Dockerfile here.
 FROM node:20-bookworm-slim
 
 WORKDIR /app
@@ -10,8 +12,8 @@ COPY packages ./packages
 
 RUN pnpm install --frozen-lockfile
 
-ARG NEXT_PUBLIC_SERVER_URL=http://localhost:3001
-ARG SERVER_URL=http://localhost:3001
+ARG NEXT_PUBLIC_SERVER_URL=https://mxgraph-reactflow.zeabur.app
+ARG SERVER_URL=https://mxgraph-reactflow.zeabur.app
 ENV NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_SERVER_URL
 ENV SERVER_URL=$SERVER_URL
 ENV NODE_ENV=production

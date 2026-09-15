@@ -1,3 +1,4 @@
+# HBMP backend (Express + Prisma). Use this Dockerfile on the Zeabur "server" service.
 FROM node:20-bookworm-slim
 
 WORKDIR /app
