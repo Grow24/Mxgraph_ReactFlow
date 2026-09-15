@@ -2,8 +2,8 @@
 
 import { useCallback, useMemo } from 'react'
 import { Connection, Edge, Node, useReactFlow } from 'reactflow'
-import { HBMP_NETWORK_REGISTRY } from '../../../packages/engine/src/network/registry'
-import type { NetworkNodeType, NetworkPort, ConnectionRule } from '../../../packages/engine/src/network/types'
+import { HBMP_NETWORK_REGISTRY } from '@hbmp/engine'
+import type { NetworkNodeType, NetworkPort, ConnectionRule } from '@hbmp/engine'
 import type { NodeKind } from '@hbmp/shared-types'
 
 export interface ConnectionValidationResult {

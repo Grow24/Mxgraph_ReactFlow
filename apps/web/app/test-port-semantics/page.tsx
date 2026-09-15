@@ -12,6 +12,7 @@ import ReactFlow, {
   Background,
   MiniMap,
   ReactFlowProvider,
+  ConnectionLineType,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
 
@@ -23,7 +24,7 @@ import { ProcessTaskNode } from '../../components/nodes/ProcessTaskNode'
 import { ReportNode } from '../../components/nodes/ReportNode'
 import { useConnectionValidation } from '../../hooks/useConnectionValidation'
 import { PortList } from '../../components/ui/PortIndicator'
-import { HBMP_NETWORK_REGISTRY } from '../../../packages/engine/src/network/registry'
+import { HBMP_NETWORK_REGISTRY } from '@hbmp/engine'
 
 const nodeTypes = {
   dataset: DatasetNode,
@@ -88,7 +89,7 @@ const initialNodes: Node[] = [
 
 const initialEdges: Edge[] = []
 
-export default function PortSemanticsDemo() {
+function PortSemanticsDemo() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes)
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges)
   const [connectionFeedback, setConnectionFeedback] = useState<string | null>(null)
@@ -165,7 +166,6 @@ export default function PortSemanticsDemo() {
       <div className="flex-1 flex">
         {/* Main diagram area */}
         <div className="flex-1 relative">
-          <ReactFlowProvider>
             <ReactFlow
               nodes={nodes}
               edges={edges}
@@ -174,14 +174,13 @@ export default function PortSemanticsDemo() {
               onConnect={onConnect}
               onNodeClick={onNodeClick}
               nodeTypes={nodeTypes}
-              connectionLineType="smoothstep"
+              connectionLineType={ConnectionLineType.SmoothStep}
               fitView
             >
               <Background color="#f1f1f1" gap={16} />
               <Controls />
               <MiniMap />
             </ReactFlow>
-          </ReactFlowProvider>
 
           {/* Connection feedback */}
           {connectionFeedback && (
@@ -317,5 +316,13 @@ export default function PortSemanticsDemo() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function PortSemanticsDemoPage() {
+  return (
+    <ReactFlowProvider>
+      <PortSemanticsDemo />
+    </ReactFlowProvider>
   )
 }

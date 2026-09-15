@@ -5,8 +5,8 @@ import { Handle, Position, NodeProps } from 'reactflow'
 import { Card } from '../ui/card'
 import { Badge } from '../ui/badge'
 import { cn } from '../../lib/utils'
-import { HBMP_NETWORK_REGISTRY } from '../../../../packages/engine/src/network/registry'
-import type { NetworkPort, NetworkNodeType } from '../../../../packages/engine/src/network/types'
+import { HBMP_NETWORK_REGISTRY } from '@hbmp/engine'
+import type { NetworkPort, NetworkNodeType } from '@hbmp/engine'
 import type { NodeKind, ValidationIssue } from '@hbmp/shared-types'
 
 // Port type to color mapping for visual distinction

@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "concurrently \"pnpm --filter web dev\" \"pnpm --filter server dev\"",
     "build": "pnpm --filter shared-types build && pnpm --filter ui-tokens build && pnpm --filter engine build && pnpm --filter server build && pnpm --filter web build",
-    "build:web": "pnpm --filter shared-types build && pnpm --filter ui-tokens build && pnpm --filter web build",
+    "build:web": "pnpm --filter shared-types build && pnpm --filter ui-tokens build && pnpm --filter engine build && pnpm --filter web build",
     "build:server": "pnpm --filter shared-types build && pnpm --filter ui-tokens build && pnpm --filter engine build && pnpm --filter server db:generate && pnpm --filter server build",
     "start:web": "pnpm --filter web start",
     "start:server": "pnpm --filter server start:prod",

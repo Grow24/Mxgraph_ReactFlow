@@ -3,7 +3,7 @@
 import React, { memo } from 'react'
 import { Badge } from '../ui/badge'
 import { cn } from '../../lib/utils'
-import type { NetworkPort } from '../../../../packages/engine/src/network/types'
+import type { NetworkPort } from '@hbmp/engine'
 
 // Port type to color and icon mapping
 const PORT_STYLES = {
