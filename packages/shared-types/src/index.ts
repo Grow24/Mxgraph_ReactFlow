@@ -43,6 +43,9 @@ export interface RFNodeData {
   }>;
   /** Parent lane ID for swimlane layouts */
   laneId?: string;
+  /** Optional rendered size for layout engines */
+  width?: number;
+  height?: number;
   /** Status indicator */
   status?: "ok" | "warn" | "error";
   /** Semantic metadata for the node */
@@ -57,6 +60,10 @@ export interface RFNode {
   type: NodeKind;
   position: { x: number; y: number };
   data: RFNodeData;
+  parentNode?: string;
+  extent?: 'parent';
+  width?: number;
+  height?: number;
 }
 
 /**
@@ -66,6 +73,8 @@ export interface RFEdge {
   id: string;
   source: string;
   target: string;
+  sourceHandle?: string;
+  targetHandle?: string;
   label?: string;
   data?: {
     relation?: string;
@@ -85,7 +94,7 @@ export interface RFGraph {
   edges: RFEdge[];
   meta?: {
     lanes?: string[];
-    orientation?: "LR" | "TB";
+    orientation?: "LR" | "TB" | "RL" | "BT";
   };
 }
 
@@ -96,13 +105,16 @@ export interface ValidationIssue {
   /** ID of the problematic node/edge */
   id: string;
   /** Severity level */
-  level: "error" | "warn";
+  level: "error" | "warn" | "info";
   /** Error code for categorization */
   code: string;
   /** Human-readable message */
   message: string;
   /** Optional path to the issue */
   path?: string;
+  nodeId?: string;
+  edgeId?: string;
+  type?: string;
 }
 
 /**
@@ -128,7 +140,7 @@ export interface LayoutRequest {
   graph: RFGraph;
   options?: {
     laneAware?: boolean;
-    orientation?: "LR" | "TB";
+    orientation?: "LR" | "TB" | "RL" | "BT";
   };
 }
 

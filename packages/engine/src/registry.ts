@@ -205,6 +205,102 @@ export const NodeRegistry: Record<NodeKind, NodeRegistryItem> = {
       fontFamily: 'Inter, sans-serif',
       fontStyle: 1 // bold
     }
+  },
+  flowStart: {
+    rfType: "flowStart",
+    mxShape: "ellipse",
+    defaultSize: { w: nodeSizes.flowStart.width, h: nodeSizes.flowStart.height },
+    style: {
+      fillColor: colors.nodeTypes.flowStart,
+      strokeColor: colors.gray[400],
+      fontColor: '#ffffff',
+      fontSize: 12,
+      fontFamily: 'Inter, sans-serif'
+    },
+    ports: [
+      { id: 'out', dir: 'out', x: 1, y: 0.5 }
+    ]
+  },
+  flowDecision: {
+    rfType: "flowDecision",
+    mxShape: "rhombus",
+    defaultSize: { w: nodeSizes.flowDecision.width, h: nodeSizes.flowDecision.height },
+    style: {
+      fillColor: colors.nodeTypes.flowDecision,
+      strokeColor: colors.gray[400],
+      fontColor: '#ffffff',
+      fontSize: 12,
+      fontFamily: 'Inter, sans-serif'
+    },
+    ports: [
+      { id: 'in', dir: 'in', x: 0, y: 0.5 },
+      { id: 'out1', dir: 'out', x: 0.5, y: 1 },
+      { id: 'out2', dir: 'out', x: 1, y: 0.5 }
+    ]
+  },
+  flowAction: {
+    rfType: "flowAction",
+    mxShape: "rectangle",
+    defaultSize: { w: nodeSizes.flowAction.width, h: nodeSizes.flowAction.height },
+    style: {
+      rounded: 1,
+      fillColor: colors.nodeTypes.flowAction,
+      strokeColor: colors.gray[400],
+      fontColor: '#ffffff',
+      fontSize: 14,
+      fontFamily: 'Inter, sans-serif'
+    },
+    ports: [
+      { id: 'in', dir: 'in', x: 0, y: 0.5 },
+      { id: 'out', dir: 'out', x: 1, y: 0.5 }
+    ]
+  },
+  flowProcess: {
+    rfType: "flowProcess",
+    mxShape: "hexagon",
+    defaultSize: { w: nodeSizes.flowProcess.width, h: nodeSizes.flowProcess.height },
+    style: {
+      fillColor: colors.nodeTypes.flowProcess,
+      strokeColor: colors.gray[400],
+      fontColor: '#ffffff',
+      fontSize: 14,
+      fontFamily: 'Inter, sans-serif'
+    },
+    ports: [
+      { id: 'in', dir: 'in', x: 0, y: 0.5 },
+      { id: 'out', dir: 'out', x: 1, y: 0.5 }
+    ]
+  },
+  flowEnd: {
+    rfType: "flowEnd",
+    mxShape: "ellipse",
+    defaultSize: { w: nodeSizes.flowEnd.width, h: nodeSizes.flowEnd.height },
+    style: {
+      fillColor: colors.nodeTypes.flowEnd,
+      strokeColor: colors.gray[400],
+      fontColor: '#ffffff',
+      fontSize: 12,
+      fontFamily: 'Inter, sans-serif'
+    },
+    ports: [
+      { id: 'in', dir: 'in', x: 0, y: 0.5 }
+    ]
+  },
+  flowTable: {
+    rfType: "flowTable",
+    mxShape: "table",
+    defaultSize: { w: nodeSizes.flowTable.width, h: nodeSizes.flowTable.height },
+    style: {
+      fillColor: colors.nodeTypes.flowTable,
+      strokeColor: colors.gray[400],
+      fontColor: '#ffffff',
+      fontSize: 14,
+      fontFamily: 'Inter, sans-serif'
+    },
+    ports: [
+      { id: 'in', dir: 'in', x: 0, y: 0.5 },
+      { id: 'out', dir: 'out', x: 1, y: 0.5 }
+    ]
   }
 };
 
@@ -266,7 +362,13 @@ export const ConnectionRules = {
       db: { in: -1, out: -1 },
       queue: { in: -1, out: -1 },
       widget: { in: -1, out: 0 },
-      lane: { in: 0, out: 0 }
+      lane: { in: 0, out: 0 },
+      flowStart: { in: 0, out: 1 },
+      flowDecision: { in: 1, out: 2 },
+      flowAction: { in: 1, out: 1 },
+      flowProcess: { in: 1, out: 1 },
+      flowEnd: { in: 1, out: 0 },
+      flowTable: { in: 1, out: 1 }
     };
 
     return limits[nodeType]?.[direction] ?? -1;

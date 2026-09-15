@@ -80,6 +80,12 @@ export const colors = {
     queue: '#ec4899',         // Pink
     widget: '#10b981',        // Emerald
     lane: '#64748b',          // Slate
+    flowStart: '#22c55e',
+    flowDecision: '#f59e0b',
+    flowAction: '#0ea5e9',
+    flowProcess: '#8b5cf6',
+    flowEnd: '#ef4444',
+    flowTable: '#6366f1',
   },
 } as const;
 
@@ -161,6 +167,12 @@ export const nodeSizes = {
   queue: { width: 160, height: 56 },
   widget: { width: 220, height: 120 },
   lane: { width: 1200, height: 200 },
+  flowStart: { width: 72, height: 72 },
+  flowDecision: { width: 80, height: 80 },
+  flowAction: { width: 160, height: 56 },
+  flowProcess: { width: 180, height: 56 },
+  flowEnd: { width: 72, height: 72 },
+  flowTable: { width: 200, height: 120 },
 } as const;
 
 /**
